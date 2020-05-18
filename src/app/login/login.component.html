@@ -1,0 +1,26 @@
+<div class="container w-25">
+
+    <h3>Login</h3>
+    <form [formGroup]="login" (ngSubmit)="submit(login.value)">
+
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="username" class="form-control" formControlName="username" aria-describedby="username"
+                placeholder="User Name">
+            <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+                <div *ngIf="username.errors.required">Cannot be empty</div>
+                <div *ngIf="username.errors.minlength">Atleast 3 characters required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                <div *ngIf="password.errors.required">Cannot be empty</div>
+                <div *ngIf="password.errors.minlength">Atleast 3 characters required</div>
+            </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="!login.valid">Submit</button>
+
+    </form>
+</div>

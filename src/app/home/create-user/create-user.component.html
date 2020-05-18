@@ -1,0 +1,98 @@
+<div class="row m-0">
+    <div class="col-12 col-md-6"></div>
+    <div class="col-12 col-md-6 text-right">
+        <button type="button" class="btn btn-primary m-3" [routerLink]="['/home']">Back to Home</button>
+    </div>
+</div>
+
+<h3 class="px-5 mb-3">Create New user here!</h3>
+<div class="row m-0 px-5">
+    <form [formGroup]="createuser" (ngSubmit)="submit(createuser.value)">
+
+        <div>
+            <p class="mb-1">Please select your gender</p>
+            <div class="alert alert-danger" *ngIf="gender.touched && !gender.valid">
+                <div *ngIf="gender.errors.required">This field is required</div>
+            </div>
+        </div>
+        <div class="radio d-inline-block mr-5">
+            <label>
+                <input type="radio" formControlName="gender" value="Male">
+                Male
+            </label>
+        </div>
+        <div class="radio d-inline-block mr-5">
+            <label>
+                <input type="radio" formControlName="gender" value="Female">
+                Female
+            </label>
+        </div>
+        <div class="radio d-inline-block">
+            <label>
+                <input type="radio" formControlName="gender" value="TransGender">
+                TransGender
+            </label>
+        </div>
+        
+        <div formGroupName="name">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="title" class="form-control" formControlName="title" placeholder="title">
+                <div class="alert alert-danger" *ngIf="title.touched && !title.valid">
+                    <div *ngIf="title.errors.required">Cannot be empty</div>
+                    <div *ngIf="title.errors.minlength">Atleast 2 characters required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="first">First Name</label>
+                <input type="first" class="form-control" formControlName="first" placeholder="first">
+                <div class="alert alert-danger" *ngIf="first.touched && !first.valid">
+                    <div *ngIf="first.errors.required">Cannot be empty</div>
+                    <div *ngIf="first.errors.minlength">Atleast 3 characters required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="last">Last Name</label>
+                <input type="last" class="form-control" formControlName="last" placeholder="last">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="email">
+            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                <div *ngIf="email.errors.required">Cannot be empty</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="username" class="form-control" formControlName="username" placeholder="username">
+            <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+                <div *ngIf="username.errors.required">Cannot be empty</div>
+                <div *ngIf="username.errors.minlength">Atleast 3 characters required</div>
+            </div>
+        </div>        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                <div *ngIf="password.errors.required">Cannot be empty</div>
+                <div *ngIf="password.errors.minlength">Atleast 3 characters required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dob">DOB</label>
+            <input type="dob" class="form-control" formControlName="dob" placeholder="DOB">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="phone" class="form-control" formControlName="phone" placeholder="Phone">
+            <div class="alert alert-danger" *ngIf="dob.touched && !dob.valid">
+                <div *ngIf="phone.errors.required">Cannot be empty</div>
+                <div *ngIf="phone.errors.minlength">Atleast 3 characters required</div>
+            </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="!createuser.valid">Submit</button>
+
+    </form>
+
+</div>

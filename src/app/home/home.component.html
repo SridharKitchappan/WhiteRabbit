@@ -1,0 +1,25 @@
+<div class="row m-2">
+    <div class="col-12 col-md-6 text-right">
+        <label>Search: </label>
+        <input [(ngModel)]="queryString" ngDefaultControl type="text" placeholder="Search by User Name">
+    </div>
+    <div class="col-12 col-md-6 text-right">
+        <button type="button" class="btn btn-primary ml-3" [routerLink]="['/create-user']">Create New User</button>
+    </div>
+</div>
+<div class="row m-2">
+    <div class="shadow-sm col-12 col-md-4 p-1" *ngFor="let values of rawuserData | filter : queryString">
+        <div class="media">
+            <!-- <img class="mr-3" src="{{values.user.picture.thumbnail}}" alt="Generic placeholder image"> -->
+            <div class="media-body">
+                <span class="mt-0">
+                    <label>User Name:</label> {{values.user.username}}</span>
+                <p class="m-0">
+                    <label>Gender:</label> {{values.user.gender}}</p>
+                <span class="mt-0">
+                    <label>First Name:</label> {{values.user.name.first}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
